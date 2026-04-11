@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/SatelliteGroup" />
+        <option name="gradleJvm" value="homebrew-21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/SatelliteGroup" />
+            <option value="$PROJECT_DIR$/SatelliteGroup/mission-scheduler" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/mission-scheduler" />
+        <option name="gradleJvm" value="homebrew-21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/mission-scheduler" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

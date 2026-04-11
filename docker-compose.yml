@@ -1,0 +1,30 @@
+services:
+  server:
+    build:
+      context: ./SatelliteGroup
+      dockerfile: Dockerfile
+    container_name: space-server
+    environment:
+      - SERVER_PORT=8080
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8080/api/overview?name=test"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  mission-scheduler:
+    build:
+      context: ./mission-scheduler
+      dockerfile: Dockerfile
+    container_name: mission-scheduler
+    depends_on:
+      server:
+        condition: service_healthy
+    environment:
+      - SERVER_PORT=8081
+      - SERVER_URL=http://space-server:8080
+    ports:
+      - "8081:8081"
