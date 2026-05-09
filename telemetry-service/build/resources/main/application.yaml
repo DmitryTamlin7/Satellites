@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: telemetry-service
+
+
+grpc:
+  server:
+    port: 9091

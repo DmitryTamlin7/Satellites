@@ -47,7 +47,7 @@ public class ConfiguredMissionScheduler {
                     "satelliteParam", satelliteParam
             );
             client.post()
-                    .uri("/api/add-satellites")
+                    .uri("/satellites")
                     .body(requestBody)
                     .retrieve()
                     .toBodilessEntity();
@@ -84,7 +84,7 @@ public class ConfiguredMissionScheduler {
                 Map<String, String> requestBody = Map.of("constellationName", mission.constellationName());
 
                 client.post()
-                        .uri("/api/missions")
+                        .uri("/missions")
                         .body(requestBody)
                         .retrieve()
                         .toBodilessEntity();
@@ -95,22 +95,6 @@ public class ConfiguredMissionScheduler {
                 e.printStackTrace();
             }
         }, new CronTrigger(mission.cron()));
-
-        scheduler.schedule(() -> {
-            System.out.println("Запрос статуса для " + mission.constellationName());
-            try {
-                client.get()
-                        .uri(uriBuilder -> uriBuilder
-                                .path("/api/overview")
-                                .queryParam("name", mission.constellationName())
-                                .build())
-                        .retrieve()
-                        .toBodilessEntity();
-                System.out.println("GET запрос на статус отправлен");
-            } catch (Exception e) {
-                System.out.println("Ошибка при запросе статуса: " + e.getMessage());
-            }
-        }, new CronTrigger("*/15 * * * * *"));
 
         System.out.println("Запланирована новая миссия группировки " + mission.constellationName());
     }

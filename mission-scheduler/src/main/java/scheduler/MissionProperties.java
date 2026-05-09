@@ -10,10 +10,11 @@ public record MissionProperties (
     List<MissionConfig> missions
     ){
     public record MissionConfig(
-            String targetType,
             String constellationName,
+            String cron,
             String satelliteName,
-            String cron
+            double batteryLevel,
+            double bandWidth
     )
     {}
 }

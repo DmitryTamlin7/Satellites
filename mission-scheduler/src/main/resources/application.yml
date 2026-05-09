@@ -1,12 +1,14 @@
-server:
-  port: ${SERVER_PORT:8081}
-
 app:
   satellite:
-    url: ${SERVER_URL:http://localhost:8080}
+    url: http://localhost:8080/api/constellations
     missions:
-      - targetType: CONSTELLATION
-        constellationName: "Зенит-3"
-        cron: "*/10 * * * * *"
-
-
+      - constellation-name: "Зенит-3"
+        cron: "0 0/5 * * * *"
+        satellite-name: "Satellite11"
+        battery-level: 0.77
+        band-width: 300.0
+      - constellation-name: "Уран-11"
+        cron: "0 0/10 * * * *"
+        satellite-name: "Satellite12"
+        battery-level: 0.95
+        band-width: 500.0
