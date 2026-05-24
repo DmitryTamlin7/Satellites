@@ -20,13 +20,13 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+    implementation("org.springframework.kafka:spring-kafka")
+    implementation("com.fasterxml.jackson.core:jackson-databind")
 
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    implementation("io.grpc:grpc-protobuf:1.54.0")
-    implementation("io.grpc:grpc-stub:1.54.0")
     compileOnly("org.apache.tomcat:annotations-api:6.0.53")
     implementation("net.devh:grpc-server-spring-boot-starter:3.1.0.RELEASE")
     implementation("io.grpc:grpc-protobuf:1.62.2")
@@ -42,11 +42,11 @@ dependencies {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.22.0"
+        artifact = "com.google.protobuf:protoc:3.25.1"
     }
     plugins {
         create("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.54.0"
+            artifact = "io.grpc:protoc-gen-grpc-java:1.62.2"
         }
     }
     generateProtoTasks {

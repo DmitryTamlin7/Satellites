@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission-scheduler/Satellite.mission-scheduler.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mission-scheduler/Satellite.mission-scheduler.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/telemetry-service/Satellite.telemetry-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/telemetry-service/Satellite.telemetry-service.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SatelliteGroup.main.iml" filepath="$PROJECT_DIR$/.idea/modules/SatelliteGroup.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission-scheduler.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mission-scheduler.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/telemetry-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/telemetry-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Satellite.iml" filepath="$PROJECT_DIR$/.idea/Satellite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-801265682/SatelliteGroup.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-801265682/SatelliteGroup.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/750152624/mission-scheduler.main.iml" filepath="$PROJECT_DIR$/.idea/modules/750152624/mission-scheduler.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1527002473/telemetry-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1527002473/telemetry-service.main.iml" />
     </modules>
   </component>
 </project>
