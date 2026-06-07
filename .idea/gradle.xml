@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$/../../../Рабочий стол — admin’s MacBook Air/БауманТех/Satellite/SatelliteGroup" />
             <option value="$PROJECT_DIR$/../../../Рабочий стол — admin’s MacBook Air/БауманТех/Satellite/SatelliteGroup/mission-scheduler" />
+            <option value="$PROJECT_DIR$/../../../Рабочий стол — admin’s MacBook Air/БауманТех/Satellite/SatelliteGroup/outbox-scheduler" />
           </set>
         </option>
       </GradleProjectSettings>

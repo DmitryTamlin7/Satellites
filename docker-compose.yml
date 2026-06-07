@@ -50,9 +50,15 @@ services:
     build: ./telemetry-service
     container_name: telemetry-service
     depends_on:
+      db:
+        condition: service_healthy
       kafka:
         condition: service_started
     environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/spacedb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=Soadsvanpjz228123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092
     ports:
       - "9091:9091"
