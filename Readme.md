@@ -20,10 +20,11 @@
 ### Инструкция по запуску (macOS / Linux)
 1. Установите k6 (для macOS: `brew install k6`).
 2. Склонить репозиторий `git clone https://github.com/DmitryTamlin7/Satellites`
-3. Запустить контейнер Docker `docker-compose up --build -d`
-3. Перейдите в директорию тестов: `cd load-testing`.
-4. Запустите скрипт: `k6 run load-test.js`.
-5. По завершении откройте файл `report.html` в любом браузере для просмотра интерактивного отчета.
+3. Перейти в ветку задания `git checkout k6task`
+4. Запустить контейнер Docker `docker-compose up --build -d`
+5. Перейдите в директорию тестов: `cd load-testing`.
+6. Запустите скрипт: `k6 run load-test.js`.
+7. По завершении откройте файл `report.html` в любом браузере для просмотра интерактивного отчета.
 
 
 <p align="center">
