@@ -4,6 +4,11 @@ package satellite.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
+import org.apache.kafka.common.protocol.types.Field;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import satellite.aspect.LogExecutionTime;
 import satellite.domain.OutboxRecord;
@@ -42,6 +47,10 @@ public class ConstellationService {
         System.out.println("Группировка " + constellation.getConstellationName() + " Сохранена в БД");
     }
 
+    @Caching(evict = {
+            @CacheEvict(value = "constellation", key = "#name"),
+            @CacheEvict(value = "satellites", allEntries = true)
+    })
     @Transactional
     @LogExecutionTime
     public void addSatelliteToGroup(String groupName, Satellite satellite){
@@ -159,6 +168,15 @@ public class ConstellationService {
                 sb.append(s.getBaseDetails()).append("\n")
         );
         return sb.toString();
+    }
+
+
+    @Transactional
+    @LogExecutionTime
+    @Cacheable(value = "constellation", key = "#name")
+    public SatelliteConstellation getConstellationByName(String name){
+        return repository.findByConstellationName(name)
+                .orElseThrow(() -> new RuntimeException("Группировки с именем: " + name + " Нет"));
     }
 }
 

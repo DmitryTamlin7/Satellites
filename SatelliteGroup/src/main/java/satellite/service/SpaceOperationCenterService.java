@@ -2,13 +2,15 @@ package satellite.service;
 
 
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import satellite.dto.AddSatelliteRequest;
 import satellite.aspect.LogExecutionTime;
+import satellite.domain.Satellite;
+import satellite.dto.AddSatelliteRequest;
 import satellite.dto.MissionRequest;
-import satellite.factory.SatelliteParam;
-
 
 
 /**
@@ -22,11 +24,18 @@ public class SpaceOperationCenterService {
     private final ConstellationService constellationService;
     private final SatelliteServiceImpl satelliteService;
 
+
+
+    @CacheEvict(value = "satellites", allEntries = true)
     @Transactional
     @LogExecutionTime
     public void addSatellite(AddSatelliteRequest request){
         constellationService.addSatelliteToGroup(request.getConstellationName(), request.getSatelliteParam());
     }
+
+
+
+
 
     @LogExecutionTime
     public void executeMission(MissionRequest request){
@@ -42,13 +51,13 @@ public class SpaceOperationCenterService {
         return constellationService.showConstellationStatus(name);
     }
 
+    @Caching(evict = {
+            @CacheEvict(value = "satellite", key = "#id"),
+            @CacheEvict(value = "satellites", allEntries = true)
+    })
     @Transactional
     public void removeSatellite(String conName, String satName){
         constellationService.removeSatellite(conName, satName);
     }
 
-    public void quicStart(String name, SatelliteParam param){
-        constellationService.createAndSaveConstellation(name);
-        addSatellite(new AddSatelliteRequest(name, param));
-    }
 }

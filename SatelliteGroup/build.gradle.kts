@@ -4,7 +4,6 @@ plugins {
     java
     id("org.springframework.boot") version "3.2.4"
     id("io.spring.dependency-management") version "1.1.4"
-    // Используем актуальную версию плагина для работы с Java 21
     id("com.google.protobuf") version "0.9.4"
 }
 
@@ -52,7 +51,9 @@ dependencies {
     implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")
     compileOnly("javax.annotation:javax.annotation-api:1.3.2")
     implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")
-
+    implementation("org.springframework.boot:spring-boot-starter-cache")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

@@ -16,6 +16,16 @@ services:
     networks:
       - satellite-network
 
+  redis:
+    image: redis:7.2-alpine
+    container_name: satellite-cache-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: always
+
+
   satellite-group:
     build:
       context: ./SatelliteGroup
@@ -89,6 +99,9 @@ services:
       start_period: 30s
     networks:
       - satellite-network
+
+volumes:
+  redis_data:
 
 networks:
   satellite-network:

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Satellite.iml" filepath="$PROJECT_DIR$/.idea/Satellite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SatelliteGroup.main.iml" filepath="$PROJECT_DIR$/.idea/modules/SatelliteGroup.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mission-scheduler.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mission-scheduler.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/telemetry-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/telemetry-service.main.iml" />
     </modules>
   </component>
 </project>

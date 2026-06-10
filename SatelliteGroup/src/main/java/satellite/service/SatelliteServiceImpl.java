@@ -2,6 +2,10 @@ package satellite.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.apache.kafka.common.quota.ClientQuotaAlteration;
+import org.checkerframework.checker.units.qual.C;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import satellite.exeption.SpaceOperationException;
 import satellite.domain.Satellite;
@@ -13,6 +17,7 @@ import satellite.factory.SatelliteParam;
 import satellite.repository.SatelliteRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +25,7 @@ public class SatelliteServiceImpl implements SatelliteService {
 
     private final List<SatelliteFactory> factories;
     private final SatelliteRepository repository;
+
 
     @Override
     public Satellite createSatellite(SatelliteParam param) {
@@ -73,5 +79,28 @@ public class SatelliteServiceImpl implements SatelliteService {
         repository.saveAll(satellites);
     }
 
+    @Cacheable(value = "satellite", key = "#id")
+    public Satellite getSatelliteById(Long id){
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Спутник с id: " + id + " не найден"));
+    }
+
+    @Cacheable(value = "satellites", key = "'all'")
+    public List<Satellite> getAllSatellites() {
+        return repository.findAll();
+    }
+
+    @CacheEvict(value = "satellite", key = "#id")
+    public Satellite updateSatellite(Long id, Satellite updatedData) {
+        Satellite existing = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Спутник не найден"));
+        existing.setName("Sat-Update");
+        return repository.save(existing);
+    }
+
+    @Cacheable(value = "satellite", key = "#constellationName + '::' + #satelliteName")
+    public Optional<Satellite> findByNames(String constellationName, String satelliteName){
+        return repository.searchByConstellationAndSatellite(constellationName, satelliteName);
+    }
 
 }
