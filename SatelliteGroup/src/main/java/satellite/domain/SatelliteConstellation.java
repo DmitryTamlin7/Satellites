@@ -1,6 +1,7 @@
 package satellite.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ public class SatelliteConstellation {
     @Column(name = "name", unique = true, nullable = false)
     private String constellationName;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "constellation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Satellite> satellites;
 

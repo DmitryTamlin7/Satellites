@@ -120,6 +120,10 @@ public class ConstellationService {
         System.out.println("Спутник " + satellite.getName() + " успешно добавлен (событие CREATED сохранено в Outbox)");
     }
 
+    @Caching(evict = {
+            @CacheEvict(value = "constellation", key = "#name"),
+            @CacheEvict(value = "satellites", allEntries = true)
+    })
     @Transactional
     @LogExecutionTime
     public void removeSatellite(String conName, String satName){

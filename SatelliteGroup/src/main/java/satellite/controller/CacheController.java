@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/cache")
 public class CacheController {
 
     private final SatelliteServiceImpl satelliteService;
@@ -24,14 +24,9 @@ public class CacheController {
         return satelliteService.getSatelliteById(id);
     }
 
-    @GetMapping("/satellites")
+    @GetMapping("/allsatellites")
     public List<Satellite> getAllSatellites() {
         return satelliteService.getAllSatellites();
-    }
-
-    @GetMapping("/constellations/{name}")
-    public SatelliteConstellation getConstellationByName(@PathVariable String name) {
-        return constellationService.getConstellationByName(name);
     }
 
     @GetMapping("/satellites/search")

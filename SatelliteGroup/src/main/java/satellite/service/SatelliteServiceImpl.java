@@ -100,7 +100,7 @@ public class SatelliteServiceImpl implements SatelliteService {
 
     @Cacheable(value = "satellite", key = "#constellationName + '::' + #satelliteName")
     public Optional<Satellite> findByNames(String constellationName, String satelliteName){
-        return repository.searchByConstellationAndSatellite(constellationName, satelliteName);
+        return repository.findByNameAndConstellationConstellationName(constellationName, satelliteName);
     }
 
 }

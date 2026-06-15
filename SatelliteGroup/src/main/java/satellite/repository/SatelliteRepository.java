@@ -13,10 +13,6 @@ public interface SatelliteRepository extends JpaRepository<Satellite, Long> {
 
     Optional<Satellite> findByName(String name);
     List<Satellite> findAllByConstellationConstellationName(String name);
-    @Query("SELECT s FROM Satellite s WHERE s.name = :satelliteName")
-    Optional<Satellite> searchByConstellationAndSatellite(
-            @Param("constellationName") String constellationName,
-            @Param("satelliteName") String satelliteName
-    );
+    Optional<Satellite> findByNameAndConstellationConstellationName(String name, String conName);
 }
 
