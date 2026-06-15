@@ -1,0 +1,5 @@
+rootProject.name = 'SatelliteGroup'
+
+include 'mission-scheduler'
+include 'outbox-scheduler'
+

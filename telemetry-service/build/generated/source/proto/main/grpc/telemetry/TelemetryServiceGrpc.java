@@ -5,14 +5,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.54.0)",
+    value = "by gRPC proto compiler (version 1.62.2)",
     comments = "Source: Telemetry.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class TelemetryServiceGrpc {
 
   private TelemetryServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "telemetry.TelemetryService";
+  public static final java.lang.String SERVICE_NAME = "telemetry.TelemetryService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<telemetry.TelemetryRequest,
@@ -254,9 +254,9 @@ public final class TelemetryServiceGrpc {
   private static final class TelemetryServiceMethodDescriptorSupplier
       extends TelemetryServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    TelemetryServiceMethodDescriptorSupplier(String methodName) {
+    TelemetryServiceMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 
